@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="oldmenTest">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/vendor.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/controllers.js"></script>
+<script src="js/controllers/home.js"></script>
+
+<div ng-controller="HomeCtrl as home" class="container">
+    <select ng-model="currentRegion"
+            ng-options="region for region in data.regions"
+            ng-change="setCurrentCountry()"></select>
+
+    <select ng-show="currentCountry" ng-model="currentCountry"
+            ng-options="country for country in data.countries[currentRegion]"
+            ng-change="setCurrentContactList()"></select>
+
+    <div class="result" ng-repeat="contact in currentContactList">
+        <h1>{{contact.name}}</h1>
+        <span>Write: <a>{{contact.email}}</a></span>
+        <span>Call: {{contact.phone}}</span>
+    </div>
+
+</div>
+
+</body>
+</html>
