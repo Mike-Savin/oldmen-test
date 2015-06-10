@@ -34,10 +34,15 @@ angular.module('oldmenTest', ['ngDialog']).controller('HomeCtrl', ['$scope', '$h
         if (balance > 0) {
             $('.ngdialog').css('padding-top', balance / 2);
         }
+        else {
+            $('.ngdialog').css('padding-top', 15);
+        }
+        $('.ngdialog').css('padding-bottom', 0);
     };
 
     angular.element($window).bind('resize', function() {
         $scope.setContainerPadding();
+        $scope.setModalPadding();
     });
 
     $scope.$watch(function() { return $('.ngdialog-content').height() },

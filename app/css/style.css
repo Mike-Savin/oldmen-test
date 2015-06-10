@@ -12,6 +12,7 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  font-family: 'Helvetica Neue';
 
   background: #9b59b5;
   background: -moz-linear-gradient(-45deg,  #9b59b5 0%, #9b59b5 0%, #3397db 50%, #19bb9b 100%);
@@ -21,6 +22,8 @@ body {
   background: -ms-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%);
   background: linear-gradient(135deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b59b5', endColorstr='#19bb9b',GradientType=1 );
+
+  overflow: hidden;
 }
 
 img {
@@ -67,7 +70,6 @@ select {
   height: 40px;
   color: #fff;
   font-size: 12px;
-  font-family: 'Helvetica Neue';
 
   -webkit-appearance: none;
   background-image: url('/images/stories/select-arrow-pink.png');
@@ -86,24 +88,6 @@ select option {
   margin-top: 20px;
 }
 
-.result {
-  background: #fff;
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  right: 15px;
-  margin-top: 15px;
-}
-
-.result-close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
 div.ngdialog.ngdialog-theme-default .ngdialog-content {
     width: auto;
     margin: 0;
@@ -117,6 +101,20 @@ div.ngdialog.ngdialog-theme-default .ngdialog-content {
     overflow: auto;
 }
 
+h1 {
+    font-weight: normal;
+    margin: 10px 0 0;
+}
+
+span {
+    display: block;
+}
+
+a, a:hover, a:active, a:focus {
+    text-decoration: none;
+    color: #36b;
+}
+
 @media screen and (min-width: 768px) {
     .container,
     div.ngdialog.ngdialog-theme-default .ngdialog-content {
@@ -124,6 +122,10 @@ div.ngdialog.ngdialog-theme-default .ngdialog-content {
         margin: 0 auto;
         position: relative;
         overflow: auto;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
     }
     .container {
         padding: 0;
