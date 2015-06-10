@@ -1,22 +1,26 @@
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url(../fonts/HelveticaNeue.ttf);
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 /* main */
 body {
-  font-family: 'Arial', 'Tahoma';
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background: #eee repeat scroll;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 
-  background: #9b59b5; /* Old browsers */
-  background: -moz-linear-gradient(-45deg,  #9b59b5 0%, #9b59b5 0%, #3397db 50%, #19bb9b 100%); /* FF3.6+ */
+  background: #9b59b5;
+  background: -moz-linear-gradient(-45deg,  #9b59b5 0%, #9b59b5 0%, #3397db 50%, #19bb9b 100%);
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#9b59b5), color-stop(0%,#9b59b5), color-stop(50%,#3397db), color-stop(100%,#19bb9b)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%); /* IE10+ */
-  background: linear-gradient(135deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b59b5', endColorstr='#19bb9b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: -webkit-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%);
+  background: -o-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%);
+  background: -ms-linear-gradient(-45deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%);
+  background: linear-gradient(135deg,  #9b59b5 0%,#9b59b5 0%,#3397db 50%,#19bb9b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b59b5', endColorstr='#19bb9b',GradientType=1 );
 }
 
 img {
@@ -31,6 +35,7 @@ ul {
 
 a:focus,
 input:focus,
+select:focus,
 textarea:focus {
   outline: 0 none;
 }
@@ -50,8 +55,84 @@ textarea:focus {
   width: auto;
   height: 100vh;
   padding: 15px;
+  position: relative;
 }
 
 select {
-  
+  width: 100%;
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 11px 14px;
+  height: 40px;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Helvetica Neue';
+
+  -webkit-appearance: none;
+  background-image: url('/images/stories/select-arrow-pink.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none!important;
+}
+
+select option {
+  background-color: #555;
+}
+
+.last-select {
+  margin-top: 20px;
+}
+
+.result {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  right: 15px;
+  margin-top: 15px;
+}
+
+.result-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+div.ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: auto;
+    margin: 0;
+    border-radius: 0;
+
+    position: fixed;
+    top: 15px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .container,
+    div.ngdialog.ngdialog-theme-default .ngdialog-content {
+        width: 75%;
+        margin: 0 auto;
+        position: relative;
+        overflow: auto;
+    }
+    .container {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container,
+    div.ngdialog.ngdialog-theme-default .ngdialog-content {
+        width: 50%;
+    }
 }

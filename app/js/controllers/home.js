@@ -1,5 +1,6 @@
-angular.module('oldmenTest').controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('oldmenTest', ['ngDialog']).controller('HomeCtrl', ['$scope', '$http', '$window', 'ngDialog', function ($scope, $http, $window, ngDialog) {
     $scope.data = [];
+    $scope.currentContactList = null;
 
     $http.get('../data/contacts.json').success(function(data) {
 	    $scope.data = data;
@@ -10,21 +11,40 @@ angular.module('oldmenTest').controller('HomeCtrl', ['$scope', '$http', function
     $scope.setCurrentCountry = function() {
         if ($scope.data.countries[$scope.currentRegion]) {
             $scope.currentCountry = $scope.data.countries[$scope.currentRegion][0];
-            $scope.currentContactList = $scope.data.contacts[$scope.currentCountry];
         }
         else {
             $scope.currentCountry = null;
             $scope.currentContactList = $scope.data.contacts[$scope.currentRegion];
+            ngDialog.open({template:'modal', scope: $scope});
         }
     };
 
     $scope.setCurrentContactList = function() {
         $scope.currentContactList = $scope.data.contacts[$scope.currentCountry];
+        ngDialog.open({template:'modal', scope: $scope});
     };
 
-    this.setStyles = function() {
-        //$('.container').height = $(window).height;
+    $scope.setContainerPadding = function() {
+        $('.container').css('padding-top', ($(window).height() - 100) / 2);
     };
 
-    this.setStyles();
+    $scope.setModalPadding = function(value) {
+        var modalHeight  = value || $('.ngdialog-content').height(),
+            balance = $(window).height() - modalHeight;
+        if (balance > 0) {
+            $('.ngdialog').css('padding-top', balance / 2);
+        }
+    };
+
+    angular.element($window).bind('resize', function() {
+        $scope.setContainerPadding();
+    });
+
+    $scope.$watch(function() { return $('.ngdialog-content').height() },
+    function(newValue, oldValue) {
+        if (newValue != oldValue)
+            $scope.setModalPadding(newValue);
+    });
+
+    $scope.setContainerPadding();
 }]);
